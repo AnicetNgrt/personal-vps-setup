@@ -23,10 +23,10 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      PGDATA: /var/lib/postgresql/data/pgdata
+      #PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    #volumes:
+    #  - pgdata:/var/lib/postgresql/data
   # NGINX + CERTBOT
   # frontend:
   #   image: staticfloat/nginx-certbot
