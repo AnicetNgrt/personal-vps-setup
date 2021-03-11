@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export ENV=$1
+
 echo "--------------------------------"
 echo "----[CONVERTING TO UNIX FF]-----"
 echo "--------------------------------"
@@ -18,4 +20,12 @@ echo "--------------------------------"
 echo "--------[UPDATING ASDF]---------"
 echo "--------------------------------"
 
-asdf update
+$HOME/.asdf/asdf.sh update
+
+echo "--------------------------------"
+echo "--------[PULL HYPOTHESES]-------"
+echo "--------------------------------"
+
+cd ./repos/hypotheses
+git pull
+cd ../../

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export ENV=$1
+
 echo "--------------------------------"
 echo "------[SETTING UP APT-GET]------"
 echo "--------------------------------"
@@ -53,13 +55,13 @@ echo "--------------------------------"
 echo "---------[ASDF ERLANG]----------"
 echo "--------------------------------"
 
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+$HOME/.asdf/asdf.sh plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 
 echo "--------------------------------"
 echo "---------[ASDF ELIXIR]----------"
 echo "--------------------------------"
 
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+$HOME/.asdf/asdf.sh plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
 echo "--------------------------------"
 echo "-------[CLONE HYPOTHESES]-------"

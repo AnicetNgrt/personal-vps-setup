@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export ENV=$1
+
 echo "--------------------------------"
 echo "----[CONVERTING TO UNIX FF]-----"
 echo "--------------------------------"
