@@ -46,23 +46,11 @@ docker pull postgres:alpine
 docker run --name postgres_1 -e POSTGRES_PASSWORD=$PGPASSWORD -d -p $PGPORT:5432 postgres:alpine
 
 echo "--------------------------------"
-echo "------[INSTALLING ASDF]---------"
+echo "------[INSTALLING KIEX]---------"
 echo "--------------------------------"
 
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
-source $HOME/.asdf/asdf.sh
-
-echo "--------------------------------"
-echo "---------[ASDF ERLANG]----------"
-echo "--------------------------------"
-
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-
-echo "--------------------------------"
-echo "---------[ASDF ELIXIR]----------"
-echo "--------------------------------"
-
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
+kiex list known
 
 echo "--------------------------------"
 echo "-------[CLONE HYPOTHESES]-------"

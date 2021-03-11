@@ -19,10 +19,10 @@ source ./configs/$ENV/config.sh
 source ./configs/$ENV/secrets.sh
 
 echo "--------------------------------"
-echo "--------[UPDATING ASDF]---------"
+echo "--------[UPDATING KIEX]---------"
 echo "--------------------------------"
 
-$HOME/.asdf/asdf.sh update
+kiex selfupdate
 
 echo "--------------------------------"
 echo "--------[PULL HYPOTHESES]-------"

@@ -19,12 +19,10 @@ source ./configs/$ENV/config.sh
 source ./configs/$ENV/secrets.sh
 
 echo "----------------------------------"
-echo "--------[UNINSTALLING ASDF]-------"
+echo "--------[UNINSTALLING KIEX]-------"
 echo "----------------------------------"
 
-rm -rf ${ASDF_DATA_DIR:-$HOME/.asdf} ~/.tool-versions
-sed '/. $HOME/.asdf/asdf.sh/d' ~/.bashrc 
-sed '/. $HOME/.asdf/completions/asdf.bash/d' ~/.bashrc 
+rm -r $HOME/.kiex.
 
 echo "----------------------------------"
 echo "------[UNINSTALLING DOCKER]-------"
