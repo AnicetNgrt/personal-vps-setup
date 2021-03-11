@@ -50,7 +50,7 @@ echo "------[INSTALLING KIEX]---------"
 echo "--------------------------------"
 
 curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-kiex list known
+$HOME/.kiex/scripts/kiex list known
 
 echo "--------------------------------"
 echo "-------[CLONE HYPOTHESES]-------"
