@@ -1,6 +1,25 @@
 version: "3.7"
 
 services:
+  anicet-pjs4-homesynck:
+    build:
+      context: ./repos/homesynck/homesynck
+    env_file:
+      - docker.env
+    environment:
+      DATABASE_URL: ecto://postgres:postgres@anicet-postgre/homesynck
+      DATABASE_USER: postgres
+      DATABASE_PASS: postgres
+      DATABASE_NAME: homesynck
+      DATABASE_PORT: 5432
+      DATABASE_HOST: anicet-postgre
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    restart: always
+    depends_on:
+      - anicet-postgre
+  
   anicet-hypotheses:
     build:
       context: ./repos/hypotheses
@@ -15,7 +34,7 @@ services:
       DATABASE_HOST: anicet-postgre
       PORT: 4000
     ports:
-      - "4000:4000"
+      - "4001:4000"
     restart: always
     depends_on:
       - anicet-postgre
@@ -36,10 +55,13 @@ services:
       - 443:443/tcp
     environment:
       CERTBOT_EMAIL: an.nougaret@gmail.com
-      ENVSUBST_VARS: HPTH_URL HPTH_PORT HPTH_HOST
-      HPTH_HOST: anicet-hypotheses
-      HPTH_URL: bourse2021-coddity.anicetnougaret.fr
-      HPTH_PORT: 4000
+      ENVSUBST_VARS: HPTH_U HPTH_P HPTH_H HMSK_U HMSK_P HMSK_H
+      HPTH_H: anicet-hypotheses
+      HPTH_U: bourse2021-coddity.anicetnougaret.fr
+      HPTH_P: 4000
+      HMSK_H: anicet-pjs4-homesynck
+      HMSK_U: homesynck.anicetnougaret.fr
+      HMSK_P: 4001
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/user.conf.d:ro
