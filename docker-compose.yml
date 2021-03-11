@@ -1,24 +1,25 @@
 version: "3.7"
 
 services:
-  hypotheses:
+  anicet-hypotheses:
     build:
       context: ./repos/hypotheses
     env_file:
       - docker.env
     environment:
-      DATABASE_URL: ecto://postgres:postgres@db/hypotheses
+      DATABASE_URL: ecto://postgres:postgres@anicet-postgre/hypotheses
       DATABASE_USER: postgres
       DATABASE_PASS: postgres
       DATABASE_NAME: hypotheses
       DATABASE_PORT: 5432
-      DATABASE_HOST: db
+      DATABASE_HOST: anicet-postgre
+      PORT: 4000
     ports:
       - "4000:4000"
     restart: always
     depends_on:
-      - db
-  db:
+      - anicet-postgre
+  anicet-postgre:
     image: postgres:10.12-alpine
     environment:
       POSTGRES_USER: postgres
@@ -28,20 +29,19 @@ services:
     #volumes:
     #  - pgdata:/var/lib/postgresql/data
   # NGINX + CERTBOT
-  # frontend:
-  #   image: staticfloat/nginx-certbot
-  #   ports:
-  #     - 80:80/tcp
-  #     - 443:443/tcp
-  #   environment:
-  #     CERTBOT_EMAIL: ${CERTBOT_EMAIL}
-  #     ENVSUBST_VARS: HPTH_URL HPTH_PORT
-  #     HPTH_URL: ${HPTH_URL}
-  #     HPTH_PORT: ${HPTH_PORT}
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./nginx:/etc/nginx/user.conf.d:ro
-  #     - letsencrypt:/etc/letsencrypt
+  anicet-nginx-certbot:
+    image: staticfloat/nginx-certbot
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    environment:
+      CERTBOT_EMAIL: an.nougaret@gmail.com
+      ENVSUBST_VARS: HPTH_URL HPTH_PORT
+      HPTH_URL: bourse2021-coddity.anicetnougaret.fr
+      HPTH_PORT: 4000
+    restart: unless-stopped
+    volumes:
+      - ./nginx:/etc/nginx/user.conf.d:ro
+      - letsencrypt:/etc/letsencrypt
 volumes:
   letsencrypt:
-  pgdata:
