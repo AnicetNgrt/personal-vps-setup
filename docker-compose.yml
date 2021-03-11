@@ -1,7 +1,6 @@
 version: "3.5"
 
 services:
-  # HYPOTHESES
   anicet-hypotheses-server:
     build:
       context: ./repos/${HPTH_DIR}
@@ -23,10 +22,8 @@ services:
     restart: unless-stopped
     depends_on:
       - db
-  
-  # POSTGRES
   db:
-    image: postgres:9.6
+    image: postgres:alpine
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -37,7 +34,6 @@ services:
     ports:
       - target: 5432
         published: ${POSTGRES_PORT}
-  
   # NGINX + CERTBOT
   # frontend:
   #   image: staticfloat/nginx-certbot
@@ -53,7 +49,6 @@ services:
   #   volumes:
   #     - ./nginx:/etc/nginx/user.conf.d:ro
   #     - letsencrypt:/etc/letsencrypt
-
 volumes:
   letsencrypt:
   pgdata:
