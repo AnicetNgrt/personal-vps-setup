@@ -1,37 +1,32 @@
+version: "3.7"
+
 services:
-  anicet-hypotheses-server:
+  hypotheses:
     build:
-      context: ./repos/${HPTH_DIR}
+      context: ./repos/hypotheses
+    env_file:
+      - docker.env
     environment:
-      MIX_ENV: ${ENV}
-      ELIXIR_MODULE_NAME_PC: ${HPTH_MODULE_NAME_PC}
-      ELIXIR_MODULE_NAME_CC: ${HPTH_MODULE_NAME_CC}
-      URL: ${HPTH_URL}
-      SKB: ${HPTH_SKB}
-      PORT: 4000
-      PGUSER: ${POSTGRES_USER}
-      PGPASSWORD: ${POSTGRES_PASSWORD}
-      PGDATABASE: hypotheses_${ENV}
-      PGPORT: ${POSTGRES_PORT}
-      PGHOST: db
+      DATABASE_URL: ecto://postgres:postgres@db/hypotheses
+      DATABASE_USER: postgres
+      DATABASE_PASS: postgres
+      DATABASE_NAME: hypotheses
+      DATABASE_PORT: 5432
+      DATABASE_HOST: db
     ports:
-      - target: 4000
-        published: ${HPTH_PORT}
-    restart: unless-stopped
+      - "4000:4000"
+    restart: always
     depends_on:
       - db
   db:
-    image: postgres:alpine
+    image: postgres:10.12-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
-    ports:
-      - target: 5432
-        published: ${POSTGRES_PORT}
   # NGINX + CERTBOT
   # frontend:
   #   image: staticfloat/nginx-certbot

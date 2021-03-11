@@ -51,7 +51,7 @@ echo "--------------------------------"
 
 curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 chmod +x $HOME/.kiex/scripts/kiex
-$HOME/.kiex/scripts/kiex list known | cat
+$HOME/.kiex/scripts/kiex list known | echo
 
 echo "--------------------------------"
 echo "-------[CLONE HYPOTHESES]-------"
