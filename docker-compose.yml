@@ -13,6 +13,7 @@ services:
       DATABASE_NAME: homesynck
       DATABASE_PORT: 5432
       DATABASE_HOST: anicet-postgre
+      HOST: homesynck.anicetnougaret.fr
       PORT: 4001
     ports:
       - "4001:4001"
@@ -32,6 +33,7 @@ services:
       DATABASE_NAME: hypotheses
       DATABASE_PORT: 5432
       DATABASE_HOST: anicet-postgre
+      HOST: bourse2021-coddity.anicetnougaret.fr
       PORT: 4000
     ports:
       - "4000:4000"
