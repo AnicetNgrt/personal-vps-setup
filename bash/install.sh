@@ -50,20 +50,19 @@ echo "------[INSTALLING ASDF]---------"
 echo "--------------------------------"
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
-echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc 
-echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc 
+source $HOME/.asdf/asdf.sh
 
 echo "--------------------------------"
 echo "---------[ASDF ERLANG]----------"
 echo "--------------------------------"
 
-$HOME/.asdf/asdf.sh plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 
 echo "--------------------------------"
 echo "---------[ASDF ELIXIR]----------"
 echo "--------------------------------"
 
-$HOME/.asdf/asdf.sh plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
 echo "--------------------------------"
 echo "-------[CLONE HYPOTHESES]-------"
