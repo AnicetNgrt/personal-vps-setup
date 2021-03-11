@@ -36,7 +36,8 @@ services:
       - 443:443/tcp
     environment:
       CERTBOT_EMAIL: an.nougaret@gmail.com
-      ENVSUBST_VARS: HPTH_URL HPTH_PORT
+      ENVSUBST_VARS: HPTH_URL HPTH_PORT HPTH_HOST
+      HPTH_HOST: anicet-hypotheses
       HPTH_URL: bourse2021-coddity.anicetnougaret.fr
       HPTH_PORT: 4000
     restart: unless-stopped
