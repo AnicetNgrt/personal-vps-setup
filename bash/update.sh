@@ -22,7 +22,7 @@ echo "--------------------------------"
 echo "--------[UPDATING KIEX]---------"
 echo "--------------------------------"
 
-kiex selfupdate
+$HOME/.kiex/scripts/kiex selfupdate
 
 echo "--------------------------------"
 echo "--------[PULL HYPOTHESES]-------"
