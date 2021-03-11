@@ -72,13 +72,16 @@ services:
       - 443:443/tcp
     environment:
       CERTBOT_EMAIL: an.nougaret@gmail.com
-      ENVSUBST_VARS: HPTH_U HPTH_P HPTH_H HMSK_U HMSK_P HMSK_H
+      ENVSUBST_VARS: HPTH_U HPTH_P HPTH_H HMSK_U HMSK_P HMSK_H ANST_H ANST_U ANST_P
       HPTH_H: anicet-hypotheses
       HPTH_U: bourse2021-coddity.anicetnougaret.fr
       HPTH_P: 4000
       HMSK_H: anicet-pjs4-homesynck
       HMSK_U: homesynck.anicetnougaret.fr
       HMSK_P: 4001
+      ANST_H: anicet-portfolio
+      ANST_U: anicetnougaret.fr
+      ANST_P: 8080
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/user.conf.d:ro
