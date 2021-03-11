@@ -1,0 +1,6 @@
+export HPTH_REPO_URL="https://github.com/AnicetNgrt/hypotheses.io.git"
+export HPTH_DIR="hypotheses"
+export HPTH_URL="hypothesis.anicetnougaret.fr"
+export HPTH_PORT="4000"
+export HPTH_MODULE_NAME_PC="Hypotheses"
+export HPTH_MODULE_NAME_CC="hypotheses"

@@ -1,0 +1,59 @@
+version: "3.5"
+
+services:
+  # HYPOTHESES
+  anicet-hypotheses-server:
+    build:
+      context: ./repos/${HPTH_DIR}
+    environment:
+      MIX_ENV: ${ENV}
+      ELIXIR_MODULE_NAME_PC: ${HPTH_MODULE_NAME_PC}
+      ELIXIR_MODULE_NAME_CC: ${HPTH_MODULE_NAME_CC}
+      URL: ${HPTH_URL}
+      SKB: ${HPTH_SKB}
+      PORT: 4000
+      PGUSER: ${POSTGRES_USER}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATABASE: hypotheses_${ENV}
+      PGPORT: ${POSTGRES_PORT}
+      PGHOST: db
+    ports:
+      - target: 4000
+        published: ${HPTH_PORT}
+    restart: unless-stopped
+    depends_on:
+      - db
+  
+  # POSTGRES
+  db:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: on-failure
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - target: 5432
+        published: ${POSTGRES_PORT}
+  
+  # NGINX + CERTBOT
+  # frontend:
+  #   image: staticfloat/nginx-certbot
+  #   ports:
+  #     - 80:80/tcp
+  #     - 443:443/tcp
+  #   environment:
+  #     CERTBOT_EMAIL: ${CERTBOT_EMAIL}
+  #     ENVSUBST_VARS: HPTH_URL HPTH_PORT
+  #     HPTH_URL: ${HPTH_URL}
+  #     HPTH_PORT: ${HPTH_PORT}
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./nginx:/etc/nginx/user.conf.d:ro
+  #     - letsencrypt:/etc/letsencrypt
+
+volumes:
+  letsencrypt:
+  pgdata:
