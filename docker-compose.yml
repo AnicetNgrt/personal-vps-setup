@@ -1,6 +1,21 @@
+# Author: Anicet Nougaret
+# =======================
+# Requirements :
+#  - clone https://github.com/AnicetNgrt/hypotheses.io to ./repos/hypotheses
+#  - clone https://github.com/Homesynck/Homesynck-server to ./repos/homesynck
+#  - clone https://github.com/AnicetNgrt/anicetnougaret.fr to ./repos/an_site
+# =======================
+
 version: "3.7"
 
 services:
+  anicet-portfolio:
+    build:
+      context: ./repos/an_site
+    ports:
+      - "8080:8080"
+    restart: always
+
   anicet-pjs4-homesynck:
     build:
       context: ./repos/homesynck/homesynck
