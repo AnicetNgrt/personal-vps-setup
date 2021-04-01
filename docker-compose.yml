@@ -30,6 +30,7 @@ services:
       DATABASE_HOST: anicet-postgre
       ENABLE_ADMIN_ACCOUNT: "true"
       ENABLE_REGISTER: "true"
+      ENABLE_SESSIONS: "true"
       ENABLE_PHONE_VALIDATION: "true"
       HOST: homesynck.anicetnougaret.fr
       PORT: 4001
