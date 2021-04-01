@@ -32,6 +32,9 @@ services:
       ENABLE_REGISTER: "true"
       ENABLE_SESSIONS: "true"
       ENABLE_PHONE_VALIDATION: "true"
+      INSTANCE_NAME: "PJS4"
+      INSTANCE_DESCRIPTION: "Le serveur de démo pour la soutenance :)"
+      INSTANCE_OWNER: "L'équipe Homesynck"
       HOST: homesynck.anicetnougaret.fr
       PORT: 4001
     ports:
