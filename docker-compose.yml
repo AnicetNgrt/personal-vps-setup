@@ -29,12 +29,12 @@ services:
       DATABASE_PORT: 5432
       DATABASE_HOST: anicet-postgre
       ENABLE_ADMIN_ACCOUNT: "true"
-      ENABLE_REGISTER: "true"
+      ENABLE_REGISTER: "false"
       ENABLE_SESSIONS: "true"
-      ENABLE_PHONE_VALIDATION: "true"
-      INSTANCE_NAME: "PJS4"
-      INSTANCE_DESCRIPTION: "Le serveur de démo pour la soutenance :)"
-      INSTANCE_OWNER: "L'équipe Homesynck"
+      ENABLE_PHONE_VALIDATION: "false"
+      INSTANCE_NAME: "anicetnougaret.fr"
+      INSTANCE_DESCRIPTION: "The main Homesynck node"
+      INSTANCE_OWNER: "Homesynck team"
       HOST: homesynck.anicetnougaret.fr
       PORT: 4001
     ports:
