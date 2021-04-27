@@ -45,7 +45,7 @@ services:
   
   anicet-fakebusters:
     build:
-      context: ./repos/bourse2021/fakebuster/server
+      context: ./repos/bourse2021/
     env_file:
       - docker.env
     environment:
