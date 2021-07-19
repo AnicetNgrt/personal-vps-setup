@@ -1,4 +1,2 @@
-
-repos/
-
-*.env
+docker.env
+/repos/*

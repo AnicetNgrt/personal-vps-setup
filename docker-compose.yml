@@ -13,7 +13,7 @@ services:
     build:
       context: ./repos/portfolio
     ports:
-      - "8080:3000"
+      - "3000:3000"
     restart: always
 
   anicet-pjs4-homesynck:
@@ -88,7 +88,7 @@ services:
       HMSK_P: 4001
       ANST_H: anicet-portfolio
       ANST_U: anicetnougaret.fr
-      ANST_P: 8080
+      ANST_P: 3000
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/user.conf.d:ro
