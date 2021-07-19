@@ -11,9 +11,9 @@ version: "3.7"
 services:
   anicet-portfolio:
     build:
-      context: ./repos/an_site
+      context: ./repos/portfolio
     ports:
-      - "8080:8080"
+      - "8080:3000"
     restart: always
 
   anicet-pjs4-homesynck:
