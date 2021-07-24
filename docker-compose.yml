@@ -79,7 +79,7 @@ services:
       - 443:443/tcp
     environment:
       CERTBOT_EMAIL: an.nougaret@gmail.com
-      ENVSUBST_VARS: FKBT_U FKBT_P FKBT_H HMSK_U HMSK_P HMSK_H ANST_H ANST_U ANST_P
+      ENVSUBST_VARS: FKBT_U FKBT_P FKBT_H HMSK_U HMSK_P HMSK_H ANST_H ANST_U ANST_P PLAU_H PLAU_U PLAU_P
       FKBT_H: anicet-fakebusters
       FKBT_U: bourse2021-coddity.anicetnougaret.fr
       FKBT_P: 4000
@@ -89,6 +89,9 @@ services:
       ANST_H: anicet-portfolio
       ANST_U: anicetnougaret.fr
       ANST_P: 3000
+      PLAU_H: plausible
+      PLAU_U: plausible.anicetnougaret.fr
+      PLAU_P: 8000
     restart: unless-stopped
     volumes:
       - ./nginx:/etc/nginx/user.conf.d:ro
